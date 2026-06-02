@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App.jsx";
 
 // Global fetch interceptor to bypass corrupted TMDB CDN/CloudFront caches
-const originalFetch = window.fetch;
+const originalFetch = window.fetch.bind(window);
 window.fetch = function (input, init) {
   let urlStr = typeof input === "string" ? input : (input instanceof URL ? input.href : "");
   if (urlStr.includes("api.themoviedb.org") || urlStr.includes("api.tmdb.org")) {

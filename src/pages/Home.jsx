@@ -39,6 +39,9 @@ export default function Home() {
   const [scifi, setScifi] = useState([]);
   const [punjabi, setPunjabi] = useState([]);
   const [romance, setRomance] = useState([]);
+  const [unrestrictedRomance, setUnrestrictedRomance] = useState(
+    () => localStorage.getItem('cinestream_romance_unrestricted') === 'true'
+  );
 
   // Identify if this is the tayyab4855 account
   const sessionUser = sessionStorage.getItem('cinestream_user') || '';
@@ -175,24 +178,7 @@ export default function Home() {
           setRomance([]);
         }
 
-        if (isTayyab && romanceRes) {
-          const romanceData = await romanceRes.json();
-          // Filter out adult content only if unrestricted is false
-          setRomance((romanceData.results || []).filter(m => {
-             if (unrestrictedRomance) return true;
-             if (m.adult === true) return false;
-             if (containsAdultWord(m.title) || containsAdultWord(m.overview)) return false;
-             return true;
-          }).slice(0, 18).map(m => ({
-            id: m.id,
-            title: m.title || m.name,
-            poster: m.poster_path ? `${IMG_BASE}${m.poster_path}` : null,
-            year: (m.release_date || m.first_air_date || '').split('-')[0],
-            rating: m.vote_average ? m.vote_average.toFixed(1) : null,
-            type: 'Movie',
-            isTMDB: true
-          })));
-        }
+
 
       } catch (err) {
         console.error("Failed to fetch TMDB home data:", err);

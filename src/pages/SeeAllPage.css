@@ -82,7 +82,8 @@
 /* Style cards inside See All as unified container boxes (matching reference image) */
 .see-all-grid .media-card {
   width: 100%;
-  background: #111111; /* Dark card background */
+  background: #111111;
+  /* Dark card background */
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 6px;
   overflow: hidden;
@@ -121,7 +122,8 @@
   font-weight: 700;
   color: #ffffff;
   margin: 0 0 6px;
-  white-space: normal; /* allow wrapping onto multiple lines */
+  white-space: normal;
+  /* allow wrapping onto multiple lines */
   line-height: 1.4;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -132,7 +134,8 @@
 
 /* Meta styling - subtle and compact */
 .see-all-grid .media-card__meta {
-  margin-top: auto; /* Push metadata to bottom of the card content */
+  margin-top: auto;
+  /* Push metadata to bottom of the card content */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -239,8 +242,13 @@
 
 /* Spinner Animation */
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .spinner {
